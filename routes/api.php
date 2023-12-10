@@ -4,7 +4,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
-    AuthController
+    AuthController,
+    ProgrammingLanguageController,
+    ChapterController,
+    LessonController
 };
 
 /*
@@ -33,4 +36,28 @@ Route::group([
     'middleware' => 'auth:sanctum',
 ], function ($route) {
     $route->get('/logout', [AuthController::class, 'logout']);
+});
+
+//programminglanguage
+Route::group([
+    'middleware' => 'auth:sanctum',
+    'prefix' => 'programming-language'
+], function ($route) {
+    $route->post('/create', [ProgrammingLanguageController::class, 'create']);
+});
+
+//chapter
+Route::group([
+    'middleware' => 'auth:sanctum',
+    'prefix' => 'chapter'
+], function ($route) {
+    $route->post('/create', [ChapterController::class, 'create']);
+});
+
+//lesson
+Route::group([
+    'middleware' => 'auth:sanctum',
+    'prefix' => 'lesson'
+], function ($route) {
+    $route->post('/create', [LessonController::class, 'create']);
 });

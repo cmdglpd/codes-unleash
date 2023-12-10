@@ -3,20 +3,19 @@
 namespace App\Traits;
 
 use App\Models\{
-    Availability,
     User,
-    Appointment
+    ProgrammingLanguage
 };
 
 trait Generator
 {
-    protected function appointmentReferenceNumber(){
+    protected function programmingLanguageReferenceNumber(){
 
         do {
 
             $referenceNumber = bin2hex(random_bytes(6));
 
-        } while (Appointment::where("reference_number", $referenceNumber)->first());
+        } while (ProgrammingLanguage::where("reference_number", $referenceNumber)->first());
 
         return $referenceNumber;
     }
