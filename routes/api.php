@@ -43,7 +43,11 @@ Route::group([
     'middleware' => 'auth:sanctum',
     'prefix' => 'programming-language'
 ], function ($route) {
+    $route->get('/', [ProgrammingLanguageController::class, 'index']);
     $route->post('/create', [ProgrammingLanguageController::class, 'create']);
+    $route->get('/{referenceNumber}', [ProgrammingLanguageController::class, 'show']);
+    $route->put('/update/{referenceNumber}', [ProgrammingLanguageController::class, 'update']);
+    $route->delete('/delete/{referenceNumber}', [ProgrammingLanguageController::class, 'delete']);
 });
 
 //chapter

@@ -6,26 +6,62 @@ use App\Http\Controllers\Controller;
 
 // * REQUEST
 use App\Http\Requests\ProgrammingLanguage\{
-    CreateProgrammingLanguageRequest
+    IndexProgrammingLanguageRequest,
+    CreateProgrammingLanguageRequest,
+    ShowProgrammingLanguageRequest,
+    UpdateProgrammingLanguageRequest,
+    DeleteProgrammingLanguageRequest
 };
 
 // * REPOSITORY
 use App\Repositories\ProgrammingLanguage\{
-    CreateProgrammingLanguageRepository
+    IndexProgrammingLanguageRepository,
+    CreateProgrammingLanguageRepository,
+    ShowProgrammingLanguageRepository,
+    UpdateProgrammingLanguageRepository,
+    DeleteProgrammingLanguageRepository
 };
 
 class ProgrammingLanguageController extends Controller
 {
-    protected $create ;
+    protected $index, $create, $show, $update, $delete;
 
     public function __construct(
-        CreateProgrammingLanguageRepository $create
+        IndexProgrammingLanguageRepository $index,
+        CreateProgrammingLanguageRepository $create,
+        ShowProgrammingLanguageRepository $show,
+        UpdateProgrammingLanguageRepository $update,
+        DeleteProgrammingLanguageRepository $delete
     ) {
+        $this->index = $index;
         $this->create = $create;
+        $this->show = $show;
+        $this->update = $update;
+        $this->delete = $delete;
+    }
+
+    protected function index(IndexProgrammingLanguageRequest $request)
+    {
+        return $this->index->execute();
     }
 
     protected function create(CreateProgrammingLanguageRequest $request)
     {
         return $this->create->execute($request);
+    }
+
+    protected function show(ShowProgrammingLanguageRequest $request, $referenceNumber)
+    {
+        return $this->show->execute($referenceNumber);
+    }
+
+    protected function update(UpdateProgrammingLanguageRequest $request, $referenceNumber)
+    {
+        return $this->update->execute($referenceNumber, $request);
+    }
+
+    protected function delete(DeleteProgrammingLanguageRequest $request, $referenceNumber)
+    {
+        return $this->delete->execute($referenceNumber);
     }
 }

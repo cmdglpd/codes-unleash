@@ -13,7 +13,7 @@ class CreateChapterRepository extends BaseRepository
             $chapter = Chapter::create([
                 'reference_number' => $this->chapterReferenceNumber(),
                 'title' => $request->title,
-                'programming_language_id' => $request->programmingLanguageId
+                'programming_language_id' => $this->getProgrammingLanguageId($request->programmingLanguage)
             ]);
         }
         else{
@@ -23,7 +23,7 @@ class CreateChapterRepository extends BaseRepository
         return $this->success("Chapter successfully created",[
             'referenceNumber' => $chapter->reference_number,
             'title' => $chapter->title,
-            'programming_language_id' => $chapter->programming_language_id
+            'programmingLanguage' => $chapter->programmingLanguage->name
         ]);
     }
 }

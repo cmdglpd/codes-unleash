@@ -6,20 +6,23 @@ use App\Repositories\BaseRepository;
 
 use App\Models\ProgrammingLanguage;
 
-class CreateProgrammingLanguageRepository extends BaseRepository
+class UpdateProgrammingLanguageRepository extends BaseRepository
 {
-    public function execute($request){
+    public function execute($referenceNumber, $request){
+
         if ($this->user()->hasRole('ADMIN')){
-            $programmingLanguage = ProgrammingLanguage::create([
-                'reference_number' => $this->programmingLanguageReferenceNumber(),
+
+            $programmingLanguage = ProgrammingLanguage::where('reference_number', $referenceNumber)->firstOrFail();
+            $programmingLanguage->update([
                 'name' => $request->name
             ]);
+
         }
         else{
             return $this->error("You are not authorized to create Programming Language");
         }
 
-        return $this->success("Programming Language successfully created",[
+        return $this->success("Programming Language successfully deleted",[
             'referenceNumber' => $programmingLanguage->reference_number,
             'name' => $programmingLanguage->name
         ]);

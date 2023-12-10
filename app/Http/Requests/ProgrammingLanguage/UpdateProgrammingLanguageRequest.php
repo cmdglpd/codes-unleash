@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Chapter;
+namespace App\Http\Requests\ProgrammingLanguage;
 
 use App\Http\Requests\ResponseRequest;
 
-class CreateChapterRequest extends ResponseRequest
+class UpdateProgrammingLanguageRequest extends ResponseRequest
 {
      /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class CreateChapterRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'title' => ['string','required'],
-            'programmingLanguage' => ['string', 'required']
-            // 'programming_language_id' => ['exists:programming_languages,id']
-            //sabi ni gpt huhu
+            'name' => ['string','required']
         ];
     }
 }

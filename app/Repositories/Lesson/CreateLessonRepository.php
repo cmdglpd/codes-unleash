@@ -8,17 +8,17 @@ use App\Models\Lesson;
 
 class CreateLessonRepository extends BaseRepository
 {
-    public function execute(){
+    public function execute($request){
         if ($this->user()->hasRole('ADMIN')){
             $lesson = Lesson::create([
                 'reference_number' => $this->lessonReferenceNumber(),
-                'lesson_number' => $request->lesson_number,
+                'lesson_number' => $request->lessonNumber,
                 'title' => $request->title,
                 'video' => $request->video,
-                'example_code' => $request->example_code,
+                'example_code' => $request->exampleCode,
                 'output' => $request->output,
                 'explanation' => $request->explanation,
-                'chapter_id' => $request->chapter_id
+                'chapter_id' => $this->getChapterId($request->chapter)
             ]);
         }
         else{
@@ -33,7 +33,7 @@ class CreateLessonRepository extends BaseRepository
             'exampleCode' => $lesson->example_code,
             'output' => $lesson->output,
             'explanation' => $lesson->explanation,
-            'chapterId' => $lesson->chapter_id
+            'chapter' => $lesson->chapter->title
         ]);
     }
 }

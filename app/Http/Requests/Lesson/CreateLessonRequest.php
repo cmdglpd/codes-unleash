@@ -24,13 +24,15 @@ class CreateLessonRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'lesson_number' => ['required', 'integer'],
+            'lessonNumber' => ['required', 'string'],
             'title' => ['required', 'string'],
+            // 'video' => ['required', "video", "mimes:mp4", "max:30000"],
             'video' => ['required', 'string'],
-            'example_code' => ['required', 'string'],
+            'exampleCode' => ['required', 'string'],
             'output' => ['required', 'string'],
             'explanation' => ['required', 'string'],
-            'chapter_id' => ['required', 'integer', 'exists:chapters,id']
+            'chapter' => ['required', 'string']
+            // 'chapter_id' => ['required', 'integer', 'exists:chapters,id']
         ];
     }
 }

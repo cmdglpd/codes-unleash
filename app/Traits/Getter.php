@@ -4,7 +4,8 @@ namespace App\Traits;
 
 use App\Models\{
     User,
-    Appointment
+    ProgrammingLanguage,
+    Chapter
 };
 
 trait Getter
@@ -14,5 +15,17 @@ trait Getter
 
         return $user->id;
     }
-    
+
+    protected function getProgrammingLanguageId($referenceNumber){
+        $programmingLanguage = ProgrammingLanguage::where('reference_number', $referenceNumber)->first();
+
+        return $programmingLanguage->id;
+    }
+
+    protected function getChapterId($referenceNumber){
+        $chapter = Chapter::where('reference_number', $referenceNumber)->first();
+
+        return $chapter->id;
+    }
+
 }
