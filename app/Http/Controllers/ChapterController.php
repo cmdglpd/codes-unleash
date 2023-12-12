@@ -59,7 +59,7 @@ class ChapterController extends Controller
 
     protected function update(UpdateChapterRequest $request, $referenceNumber)
     {
-        return $this->update->execute($referenceNumber, $request);
+        return $this->update->execute($request, $referenceNumber);
     }
 
     protected function delete(DeleteChapterRequest $request, $referenceNumber)

@@ -4,8 +4,12 @@ namespace App\Http\Requests\Chapter;
 
 use App\Http\Requests\ResponseRequest;
 
+use App\Traits\Getter;
+
 class CreateChapterRequest extends ResponseRequest
 {
+    use Getter;
+
      /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,7 +28,7 @@ class CreateChapterRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'title' => ['string','required'],
+            'title' => ['string','required', 'unique:chapters,title,NULL,id,programming_language_id,'.$this->getProgrammingLanguageId($this->programmingLanguage)],
             'programmingLanguage' => ['string', 'required']
             // 'programming_language_id' => ['exists:programming_languages,id']
             //sabi ni gpt huhu

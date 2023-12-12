@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('reference_number');
             $table->string('lesson_number');
             $table->string('title');
-            $table->string('video');
+            $table->longText('description');
+            $table->string('image')->nullable();
+            $table->string('video')->nullable();
             $table->longText('example_code');
             $table->longText('output');
             $table->longText('explanation');

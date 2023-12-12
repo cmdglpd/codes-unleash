@@ -14,14 +14,14 @@ class IndexChapterRepository extends BaseRepository
         $chapters = [];
 
         foreach($allChapters as $chapter){
-            $chapter[] = [
+            $chapters[] = [
+                'programmingLanguage' => $chapter->programmingLanguage->name,
                 'referenceNumber' => $chapter->reference_number,
-                'title' => $chapter->title,
-                'programming_language_id' => $this->getProgrammingLanguageId($request->programmingLanguage)
+                'title' => $chapter->title
             ];
         }
 
         return $this->success("List of All Chapters", $chapters);
-    
+
     }
 }

@@ -8,7 +8,7 @@ use App\Models\ProgrammingLanguage;
 
 class UpdateProgrammingLanguageRepository extends BaseRepository
 {
-    public function execute($referenceNumber, $request){
+    public function execute($request, $referenceNumber){
 
         if ($this->user()->hasRole('ADMIN')){
 

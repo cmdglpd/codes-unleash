@@ -8,10 +8,10 @@ use App\Models\Lesson;
 
 class DeleteLessonRepository extends BaseRepository
 {
-    public function execute(){
+    public function execute($referenceNumber){
         if ($this->user()->hasRole('ADMIN')){
 
-            $lesson = Chapter::where('reference_number', $referenceNumber)->firstOrFail();
+            $lesson = Lesson::where('reference_number', $referenceNumber)->firstOrFail();
             $lesson->delete();
 
         }

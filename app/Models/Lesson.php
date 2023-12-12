@@ -15,6 +15,8 @@ class Lesson extends Model
         'reference_number',
         'lesson_number',
         'title',
+        'description',
+        'image',
         'video',
         'example_code',
         'output',

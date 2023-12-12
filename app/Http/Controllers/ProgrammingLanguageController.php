@@ -57,7 +57,7 @@ class ProgrammingLanguageController extends Controller
 
     protected function update(UpdateProgrammingLanguageRequest $request, $referenceNumber)
     {
-        return $this->update->execute($referenceNumber, $request);
+        return $this->update->execute($request, $referenceNumber);
     }
 
     protected function delete(DeleteProgrammingLanguageRequest $request, $referenceNumber)

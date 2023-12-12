@@ -8,27 +8,25 @@ use App\Models\Chapter;
 
 class ShowChapterRepository extends BaseRepository
 {
-    public function execute(){
+    public function execute($referenceNumber){
         $chapter = Chapter::where('reference_number', $referenceNumber)->firstOrFail();
         $allLessons = $chapter->lessons;
-        $lesson = [];
+        $lessons = [];
 
-        foreach($allLessons as $lesson){
-            $lesson[] = [
-                'referenceNumber' => $chapter->reference_number,
-                'title' => $lesson->title
-            ];
+        if($allLessons){
+            foreach($allLessons as $lesson){
+                $lessons[] = [
+                    'referenceNumber' => $lesson->reference_number,
+                    'lessonNumber' => $lesson->title
+                ];
+            }
         }
 
-        return $this->success("Chapters Found", [
+        return $this->success("Chapter Found", [
+            'programmingLanguage' => $chapter->programmingLanguage->name,
             'referenceNumber' => $chapter->reference_number,
-            'lesson_number' => $lesson->lesson_number,
-            'title' => $lesson->title,
-            'video' => $lesson->video,
-            'example_code' => $lesson->example_code,
-            'output' => $lesson->output,
-            'explanation' => $lesson->explanation,
-            'chapter_id' => $lesson-> chapter_id
+            'title' => $chapter->title,
+            'lessons' => $lessons
         ]);
     }
 }

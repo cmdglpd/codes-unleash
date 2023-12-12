@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\ProgrammingLanguage;
+namespace App\Http\Requests\Chapter;
 
 use App\Http\Requests\ResponseRequest;
 
-class CreateProgrammingLanguageRequest extends ResponseRequest
+class DeleteChapterRequest extends ResponseRequest
 {
      /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class CreateProgrammingLanguageRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'name' => ['string','required', 'unique:programming_languages,name']
+            //
         ];
     }
 }

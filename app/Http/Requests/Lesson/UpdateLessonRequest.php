@@ -4,12 +4,8 @@ namespace App\Http\Requests\Lesson;
 
 use App\Http\Requests\ResponseRequest;
 
-use App\Traits\Getter;
-
-class CreateLessonRequest extends ResponseRequest
+class UpdateLessonRequest extends ResponseRequest
 {
-    use Getter;
-
      /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,8 +24,8 @@ class CreateLessonRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'lessonNumber' => ['required', 'string', 'unique:lessons,lesson_number,NULL,id,chapter_id,'.$this->getChapterId($this->chapter)],
-            'title' => ['required', 'string', 'unique:lessons,title,NULL,id,chapter_id,'.$this->getChapterId($this->chapter)],
+            'lessonNumber' => ['required', 'string'],
+            'title' => ['required', 'string'],
             'description' => ['required', 'string'],
             // 'video' => ['required', "video", "mimes:mp4", "max:30000"],
             'video' => ['required', 'string'],

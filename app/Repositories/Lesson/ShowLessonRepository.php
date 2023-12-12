@@ -8,29 +8,21 @@ use App\Models\Lesson;
 
 class ShowLessonRepository extends BaseRepository
 {
-    //diko sure to kase show na diko alam ano passhow ng lessons 
-    //kase makikita na sa chapters? HJJSHAHJSAHJSJHJHS huhu
-    public function execute(){
-        $chapter = Chapter::where('reference_number', $referenceNumber)->firstOrFail();
-        $allLessons = $chapter->lessons;
-        $lesson = [];
-
-        foreach($allLessons as $lesson){
-            $lesson[] = [
-                'referenceNumber' => $chapter->reference_number,
-                'title' => $lesson->title
-            ];
-        }
+    public function execute($referenceNumber){
+        $lesson = Lesson::where('reference_number', $referenceNumber)->firstOrFail();
 
         return $this->success("Lessons Found", [
-            'referenceNumber' => $chapter->reference_number,
-            'lesson_number' => $lesson->lesson_number,
+            'programmingLanguage' => $lesson->chapter->programmingLanguage->name,
+            'chapter' => $lesson->chapter->name,
+            'referenceNumber' => $lesson->reference_number,
+            'lessonNumber' => $lesson->lesson_number,
             'title' => $lesson->title,
+            'description' => $lesson->description,
             'video' => $lesson->video,
-            'example_code' => $lesson->example_code,
+            'image' => $lesson->image,
+            'exampleCode' => $lesson->example_code,
             'output' => $lesson->output,
             'explanation' => $lesson->explanation,
-            'chapter_id' => $lesson-> chapter_id
         ]);
     }
 }
