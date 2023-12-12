@@ -16,7 +16,7 @@ class DeleteProgrammingLanguageRepository extends BaseRepository
 
         }
         else{
-            return $this->error("You are not authorized to create Programming Language");
+            return $this->error("You are not authorized to delete Programming Language");
         }
 
         return $this->success("Programming Language successfully deleted");

@@ -26,6 +26,7 @@ class CreateLessonRequest extends ResponseRequest
         return [
             'lessonNumber' => ['required', 'string'],
             'title' => ['required', 'string'],
+            //pati image heheheh
             // 'video' => ['required', "video", "mimes:mp4", "max:30000"],
             'video' => ['required', 'string'],
             'exampleCode' => ['required', 'string'],

@@ -5,7 +5,8 @@ namespace App\Traits;
 use App\Models\{
     User,
     ProgrammingLanguage,
-    Chapter
+    Chapter,
+    Lesson
 };
 
 trait Getter
@@ -26,6 +27,12 @@ trait Getter
         $chapter = Chapter::where('reference_number', $referenceNumber)->first();
 
         return $chapter->id;
+    }
+
+    protected function getLessonId($referenceNumber){
+        $lesson = Lesson::where('reference_number', $referenceNumber)->first();
+
+        return $lesson->id;
     }
 
 }

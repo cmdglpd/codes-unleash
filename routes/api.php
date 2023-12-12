@@ -55,7 +55,11 @@ Route::group([
     'middleware' => 'auth:sanctum',
     'prefix' => 'chapter'
 ], function ($route) {
+    $route->get('/', [ChapterController::class, 'index']);
     $route->post('/create', [ChapterController::class, 'create']);
+    $route->get('/{referenceNumber}', [ChapterController::class, 'show']);
+    $route->put('/update/{referenceNumber}', [ChapterController::class, 'update']);
+    $route->delete('/delete/{referenceNumber}', [ChapterController::class, 'delete']);
 });
 
 //lesson
