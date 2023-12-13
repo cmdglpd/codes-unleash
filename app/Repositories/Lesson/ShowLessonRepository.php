@@ -11,6 +11,8 @@ class ShowLessonRepository extends BaseRepository
     public function execute($referenceNumber){
         $lesson = Lesson::where('reference_number', $referenceNumber)->firstOrFail();
 
+        //ano po condition here na need or ganito talaga huhu
+
         return $this->success("Lessons Found", [
             'programmingLanguage' => $lesson->chapter->programmingLanguage->name,
             'chapter' => $lesson->chapter->name,
