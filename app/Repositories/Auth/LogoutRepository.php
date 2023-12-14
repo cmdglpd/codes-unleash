@@ -11,6 +11,6 @@ class LogoutRepository extends BaseRepository
         $this->invalidateToken($this->user());
 
         return $this->success("Logout successful");
-        
+
     }
 }

@@ -3,7 +3,8 @@
 namespace App\Repositories\Auth;
 
 use App\Repositories\BaseRepository;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\OtpMail;
 use App\Models\User;
 
 use Hash;
@@ -22,7 +23,13 @@ class RegisterRepository extends BaseRepository
 
         $user->assignRole('USER');
 
-        return $this->success("User created successfully");
+        $otp = rand(100000, 999999);
+
+        $user->update(['otp' => $otp]);
+
+        Mail::to($user->email)->send(new OtpMail($otp));
+
+        return $this->success("User created successfully. Check email for email verification.");
 
     }
 }

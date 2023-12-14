@@ -29,6 +29,8 @@ Route::group([
 ], function ($route) {
     $route->post('/login', [AuthController::class, 'login']);
     $route->post('/register', [AuthController::class, 'register']);
+    $route->post('/verify-email', [AuthController::class, 'verifyEmail']);
+    $route->post('/send-otp', [AuthController::class, 'sendOtp']);
 });
 
 

@@ -14,6 +14,12 @@ class LoginRepository extends BaseRepository
 {
     public function execute($request){
 
+        $user = User::where('email', $request->usernameOrEmail)->orWhere('username', $request->usernameOrEmail)->firstOrFail();
+
+        if (!$user->hasVerifiedEmail()) {
+            return $this->error("Please verify email first.");
+        }
+
         if (
             Auth::attempt([
                 'email' => $request->usernameOrEmail,
