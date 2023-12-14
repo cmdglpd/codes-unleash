@@ -13,8 +13,8 @@ class RegisterRepository extends BaseRepository
     public function execute($request){
 
         $user = User::create([
-            'first_name' => $request->firstName,
-            'last_name' => $request->lastName,
+            //'first_name' => $request->firstName,
+            //'last_name' => $request->lastName,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password)
