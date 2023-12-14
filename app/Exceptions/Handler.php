@@ -47,15 +47,15 @@ class Handler extends ExceptionHandler
                 ], 404);
         });
 
-        $this->renderable(function (QueryException $e) {
-            return response()->json(
-                [
-                    'message'   =>  "Some data does not exist, Please double check your data",
-                    'results'   =>  [],
-                    'code'      =>  404,
-                    'errors'    =>  true,
-                ], 404);
-        });
+        // $this->renderable(function (QueryException $e) {
+        //     return response()->json(
+        //         [
+        //             'message'   =>  "Some data does not exist, Please double check your data",
+        //             'results'   =>  [],
+        //             'code'      =>  404,
+        //             'errors'    =>  true,
+        //         ], 404);
+        // });
 
         // $this->renderable(function (Exception $e) {
         //     return response()->json(
