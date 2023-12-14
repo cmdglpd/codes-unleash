@@ -16,7 +16,7 @@ class Lesson extends Model
         'lesson_number',
         'title',
         'description',
-        'image',
+        //'image',
         'video',
         'example_code',
         'output',

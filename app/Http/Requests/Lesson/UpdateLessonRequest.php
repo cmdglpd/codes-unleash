@@ -29,11 +29,11 @@ class UpdateLessonRequest extends ResponseRequest
             'description' => ['required', 'string'],
             // 'video' => ['required', "video", "mimes:mp4", "max:30000"],
             'video' => ['required', 'string'],
-            'image' => ['required', 'string'],
+            //'image' => ['required', 'string'],
             'exampleCode' => ['required', 'string'],
             'output' => ['required', 'string'],
             'explanation' => ['required', 'string'],
-            'chapter' => ['required', 'string']
+            //'chapter' => ['required', 'string']
             // 'chapter_id' => ['required', 'integer', 'exists:chapters,id']
         ];
     }

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ProgrammingLanguage;
+use App\Models\Lesson;
 
 class Chapter extends Model
 {
@@ -23,5 +24,9 @@ class Chapter extends Model
 
     protected function programmingLanguage(){
         return $this->belongsTo(ProgrammingLanguage::class, 'programming_language_id');
+    }
+
+    protected function lessons(){
+        return $this->hasMany(Lesson::class, 'chapter_id');
     }
 }

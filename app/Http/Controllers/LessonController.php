@@ -58,7 +58,7 @@ class LessonController extends Controller
 
     protected function update(UpdateLessonRequest $request, $referenceNumber)
     {
-        return $this->update->execute($referenceNumber, $request);
+        return $this->update->execute($request, $referenceNumber);
     }
 
     protected function delete(DeleteLessonRequest $request, $referenceNumber)

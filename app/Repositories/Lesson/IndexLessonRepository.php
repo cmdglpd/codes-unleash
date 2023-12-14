@@ -14,9 +14,9 @@ class IndexLessonRepository extends BaseRepository
         $lessons = [];
 
         foreach($allLessons as $lesson){
-            $lesson[] = [
+            $lessons[] = [
                 'referenceNumber' => $lesson->reference_number,
-                'lesson_number' => $lesson->lesson_number,
+                'lessonNumber' => $lesson->lesson_number,
                 'title' => $lesson->title,
             ];
         }

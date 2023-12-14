@@ -13,15 +13,15 @@ class ShowLessonRepository extends BaseRepository
 
         //ano po condition here na need or ganito talaga huhu
 
-        return $this->success("Lessons Found", [
+        return $this->success("Lesson Found", [
             'programmingLanguage' => $lesson->chapter->programmingLanguage->name,
-            'chapter' => $lesson->chapter->name,
+            'chapter' => $lesson->chapter->title,
             'referenceNumber' => $lesson->reference_number,
             'lessonNumber' => $lesson->lesson_number,
             'title' => $lesson->title,
             'description' => $lesson->description,
             'video' => $lesson->video,
-            'image' => $lesson->image,
+            //'image' => $lesson->image,
             'exampleCode' => $lesson->example_code,
             'output' => $lesson->output,
             'explanation' => $lesson->explanation,

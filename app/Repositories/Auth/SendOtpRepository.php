@@ -13,7 +13,7 @@ class SendOtpRepository extends BaseRepository
 
         $user = User::where('email', $request->email)->firstOrFail();
 
-        if($user->hasVerifiedEmail()){
+        if(!$user->hasVerifiedEmail()){
 
             $otp = rand(100000, 999999);
 

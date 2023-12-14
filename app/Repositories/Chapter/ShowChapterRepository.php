@@ -17,7 +17,8 @@ class ShowChapterRepository extends BaseRepository
             foreach($allLessons as $lesson){
                 $lessons[] = [
                     'referenceNumber' => $lesson->reference_number,
-                    'lessonNumber' => $lesson->title
+                    'lessonNumber' => $lesson->lesson_number,
+                    'title' => $lesson->title
                 ];
             }
         }

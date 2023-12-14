@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('lesson_number');
             $table->string('title');
             $table->longText('description');
-            $table->string('image')->nullable();
+            //$table->string('image')->nullable();
             $table->string('video')->nullable();
             $table->longText('example_code');
             $table->longText('output');

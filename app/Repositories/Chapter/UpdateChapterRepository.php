@@ -8,22 +8,21 @@ use App\Models\Chapter;
 
 class UpdateChapterRepository extends BaseRepository
 {
-    public function execute($referenceNumber, $request){
+    public function execute($request, $referenceNumber){
 
         if ($this->user()->hasRole('ADMIN')){
 
             $chapter = Chapter::where('reference_number', $referenceNumber)->firstOrFail();
             $chapter->update([
-                'title' => $request->title,
-                'programming_language_id' => $this->getProgrammingLanguageId($request->programmingLanguage)
+                'title' => $request->title
             ]);
 
         }
         else{
-            return $this->error("You are not authorized to create Chapter");
+            return $this->error("You are not authorized to update Chapter");
         }
 
-        return $this->success("Chapter successfully created",[
+        return $this->success("Chapter successfully updated",[
             'referenceNumber' => $chapter->reference_number,
             'title' => $chapter->title,
             'programmingLanguage' => $chapter->programmingLanguage->name

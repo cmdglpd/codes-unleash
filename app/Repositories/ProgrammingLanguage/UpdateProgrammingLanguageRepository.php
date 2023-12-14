@@ -19,10 +19,10 @@ class UpdateProgrammingLanguageRepository extends BaseRepository
 
         }
         else{
-            return $this->error("You are not authorized to create Programming Language");
+            return $this->error("You are not authorized to update Programming Language");
         }
 
-        return $this->success("Programming Language successfully created",[
+        return $this->success("Programming Language successfully updated",[
             'referenceNumber' => $programmingLanguage->reference_number,
             'name' => $programmingLanguage->name
         ]);

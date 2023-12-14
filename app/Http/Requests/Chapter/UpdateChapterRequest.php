@@ -24,8 +24,7 @@ class UpdateChapterRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'title' => ['string','required'],
-            'programmingLanguage' => ['string', 'required']
+            'title' => ['string','required']
         ];
     }
 }

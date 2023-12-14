@@ -13,30 +13,30 @@ class UpdateLessonRepository extends BaseRepository
 
             $lesson = Lesson::where('reference_number', $referenceNumber)->firstOrFail();
             $lesson->update([
-                'lesson_number' => $request->lesson_number,
+                'lesson_number' => $request->lessonNumber,
                 'title' => $request->title,
                 'description' => $request->description,
                 'video' => $request->video,
-                'example_code' => $request->example_code,
+                'example_code' => $request->exampleCode,
                 'output' => $request->output,
-                'explanation' => $request->explanation,
-                'chapter_id' => $request-> chapter_id
+                'explanation' => $request->explanation
+                //'chapter_id' => $request-> chapter_id
             ]);
 
         }
         else{
-            return $this->error("You are not authorized to create Lesson");
+            return $this->error("You are not authorized to update Lesson");
         }
 
-        return $this->success("Lesson successfully created",[
-            'referenceNumber' => $chapter->reference_number,
-            'lesson_number' => $lesson->lesson_number,
+        return $this->success("Lesson successfully updated",[
+            'referenceNumber' => $lesson->reference_number,
+            'lessonNumber' => $lesson->lesson_number,
             'title' => $lesson->title,
             'video' => $lesson->video,
-            'example_code' => $lesson->example_code,
+            'exampleCode' => $lesson->example_code,
             'output' => $lesson->output,
             'explanation' => $lesson->explanation,
-            'chapter_id' => $lesson-> chapter_id
+            'chapter' => $lesson->chapter->title
         ]);
 
 
