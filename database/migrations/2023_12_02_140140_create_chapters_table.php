@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
             $table->string('reference_number');
-            $table->string('title');
             $table->unsignedBigInteger('programming_language_id');
             $table->foreign('programming_language_id')->references('id')->on('programming_languages')->onDelete('cascade');
+            $table->string('title');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

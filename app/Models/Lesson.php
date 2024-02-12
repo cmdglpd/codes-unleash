@@ -4,7 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Chapter;
+use App\Models\{
+    Chapter,
+    LessonImage
+};
 
 class Lesson extends Model
 {
@@ -16,12 +19,14 @@ class Lesson extends Model
         'lesson_number',
         'title',
         'description',
-        //'image',
+        'folder',
         'video',
         'example_code',
         'output',
         'explanation',
-        'chapter_id'
+        'chapter_id',
+        'created_at',
+        'updated_at'
     ];
 
     protected $hidden = [
@@ -31,5 +36,9 @@ class Lesson extends Model
 
     protected function chapter(){
         return $this->belongsTo(Chapter::class, 'chapter_id');
+    }
+
+    protected function lessonImages(){
+        return $this->hasMany(LessonImage::class, 'lesson_id');
     }
 }

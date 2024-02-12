@@ -25,7 +25,9 @@ class User extends Authenticatable
         'email',
         'password',
         'remember_token',
-        'otp'
+        'otp',
+        'created_at',
+        'updated_at'
     ];
 
     /**

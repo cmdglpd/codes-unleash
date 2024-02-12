@@ -19,7 +19,9 @@ class Chapter extends Model
 
     protected $hidden = [
         'id',
-        'programming_language_id'
+        'programming_language_id',
+        'created_at',
+        'updated_at'
     ];
 
     protected function programmingLanguage(){

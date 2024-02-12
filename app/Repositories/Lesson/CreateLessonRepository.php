@@ -10,13 +10,17 @@ class CreateLessonRepository extends BaseRepository
 {
     public function execute($request){
         if ($this->user()->hasRole('ADMIN')){
+
+            $folder = $this->lessonFolder();
+            $videoFilePath = $request->file('video')->store("public/".$folder);
+
             $lesson = Lesson::create([
                 'reference_number' => $this->lessonReferenceNumber(),
                 'lesson_number' => $request->lessonNumber,
                 'title' => $request->title,
                 'description' => $request->description,
-                //'image' => $request->image,
-                'video' => $request->video,
+                'folder' => $folder,
+                'video' => basename($videoFilePath),
                 'example_code' => $request->exampleCode,
                 'output' => $request->output,
                 'explanation' => $request->explanation,
@@ -34,7 +38,7 @@ class CreateLessonRepository extends BaseRepository
             'lessonNumber' => $lesson->lesson_number,
             'title' => $lesson->title,
             'description' => $lesson->description,
-            //'image' => $lesson->image,
+            'folder' => $lesson->folder,
             'video' => $lesson->video,
             'exampleCode' => $lesson->example_code,
             'output' => $lesson->output,

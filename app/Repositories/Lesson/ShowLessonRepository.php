@@ -4,14 +4,15 @@ namespace App\Repositories\Lesson;
 
 use App\Repositories\BaseRepository;
 
+use Illuminate\Support\Facades\Storage;
 use App\Models\Lesson;
 
 class ShowLessonRepository extends BaseRepository
 {
     public function execute($referenceNumber){
-        $lesson = Lesson::where('reference_number', $referenceNumber)->firstOrFail();
 
-        //ano po condition here na need or ganito talaga huhu
+        $lesson = Lesson::where('reference_number', $referenceNumber)->firstOrFail();
+        $videoUrl = Storage::url("{$lesson->folder}/{$lesson->video}");
 
         return $this->success("Lesson Found", [
             'programmingLanguage' => $lesson->chapter->programmingLanguage->name,
@@ -20,8 +21,7 @@ class ShowLessonRepository extends BaseRepository
             'lessonNumber' => $lesson->lesson_number,
             'title' => $lesson->title,
             'description' => $lesson->description,
-            'video' => $lesson->video,
-            //'image' => $lesson->image,
+            'video' => asset($videoUrl),
             'exampleCode' => $lesson->example_code,
             'output' => $lesson->output,
             'explanation' => $lesson->explanation,
