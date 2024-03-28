@@ -75,3 +75,5 @@ Route::group([
     $route->put('/update/{referenceNumber}', [LessonController::class, 'update']);
     $route->delete('/delete/{referenceNumber}', [LessonController::class, 'delete']);
 });
+
+//quiz
