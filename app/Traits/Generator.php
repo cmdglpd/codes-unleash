@@ -6,7 +6,8 @@ use App\Models\{
     User,
     ProgrammingLanguage,
     Chapter,
-    Lesson
+    Lesson,
+    Quiz
 };
 
 trait Generator
@@ -29,6 +30,17 @@ trait Generator
             $referenceNumber = bin2hex(random_bytes(6));
 
         } while (Chapter::where("reference_number", $referenceNumber)->first());
+
+        return $referenceNumber;
+    }
+
+    protected function quizReferenceNumber(){
+
+        do {
+
+            $referenceNumber = bin2hex(random_bytes(6));
+
+        } while (Quiz::where("reference_number", $referenceNumber)->first());
 
         return $referenceNumber;
     }

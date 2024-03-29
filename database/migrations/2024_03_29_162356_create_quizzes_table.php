@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->string('reference_number');
-            $table->longText('question');
+            $table->string('title');
             $table->timestamps();
         });
     }

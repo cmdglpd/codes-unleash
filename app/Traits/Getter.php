@@ -6,7 +6,8 @@ use App\Models\{
     User,
     ProgrammingLanguage,
     Chapter,
-    Lesson
+    Lesson,
+    Quiz
 };
 
 trait Getter
@@ -35,4 +36,9 @@ trait Getter
         return $lesson->id;
     }
 
+    protected function getQuizId($referenceNumber){
+        $lesson = Quiz::where('reference_number', $referenceNumber)->first();
+
+        return $quiz->id;
+    }
 }

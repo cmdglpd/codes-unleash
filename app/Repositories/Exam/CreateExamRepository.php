@@ -12,6 +12,7 @@ class CreateExamRepository extends BaseRepository
     {
         if ($this->user()->hasRole('ADMIN')) {
             $exam = Exam::create([
+                'reference_number' => $this->examReferenceNumber(),
                 'title' => $request->title,
                 'questions' => $request->questions
             ]);
@@ -21,6 +22,7 @@ class CreateExamRepository extends BaseRepository
         }
             
             return $this->success("Exam successfully created", [
+                'reference_number' => $this->examReferenceNumber(),
                 'title' => $exam->title
             ]);
     }

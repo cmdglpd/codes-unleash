@@ -10,13 +10,17 @@ class Quiz extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 
-        'questions']; 
-        // Add other fillable fields as needed
+        'reference_number',
+        'title'
+    ];
 
-        protected $hidden = [
-            'id',
-            'quiz_id'
-        ];
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at'
+    ];
+
+    protected function quizzes(){
+        return $this->hasMany(Quiz::class, 'quiz_id');
+    }
 }
-
