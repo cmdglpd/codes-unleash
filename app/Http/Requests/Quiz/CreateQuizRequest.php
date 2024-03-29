@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Chapter;
+namespace App\Http\Requests\Quiz;
 
 use App\Http\Requests\ResponseRequest;
 
 use App\Traits\Getter;
 
-class CreateChapterRequest extends ResponseRequest
+class CreateQuizRequest extends ResponseRequest
 {
     use Getter;
-
      /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,9 +27,9 @@ class CreateChapterRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'title' => ['string','required', 'unique:chapters,title,NULL,id,programming_language_id,'.$this->getProgrammingLanguageId($this->programmingLanguage)],
-            'programmingLanguage' => ['string', 'required']
-
+            'title' => ['required|string|max:255'],
+            'questions' => ['required|array|min:10'], // Assuming you need exactly 15 questions
+            'questions.*.options' => ['required|array|min:2|max:4'] // Assuming each question has 2 to 4 options
         ];
     }
 }

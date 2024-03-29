@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Chapter;
+namespace App\Http\Requests\Exam;
 
 use App\Http\Requests\ResponseRequest;
 
-use App\Traits\Getter;
-
-class CreateChapterRequest extends ResponseRequest
+class ShowExamRequest extends ResponseRequest
 {
-    use Getter;
-
      /**
      * Determine if the user is authorized to make this request.
      *
@@ -28,9 +24,7 @@ class CreateChapterRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'title' => ['string','required', 'unique:chapters,title,NULL,id,programming_language_id,'.$this->getProgrammingLanguageId($this->programmingLanguage)],
-            'programmingLanguage' => ['string', 'required']
-
+            //
         ];
     }
 }

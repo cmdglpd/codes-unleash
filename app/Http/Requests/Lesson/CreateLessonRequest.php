@@ -32,13 +32,10 @@ class CreateLessonRequest extends ResponseRequest
             'title' => ['required', 'string', 'unique:lessons,title,NULL,id,chapter_id,'.$this->getChapterId($this->chapter)],
             'description' => ['required', 'string'],
             'video' => ['required', "mimes:mp4,mkv", "max:30000"],
-            // 'video' => ['required'],
-            //'image' => ['required', 'string'],
             'exampleCode' => ['required', 'string'],
             'output' => ['required', 'string'],
             'explanation' => ['required', 'string'],
             'chapter' => ['required', 'string']
-            // 'chapter_id' => ['required', 'integer', 'exists:chapters,id']
         ];
     }
 }

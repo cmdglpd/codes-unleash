@@ -77,3 +77,25 @@ Route::group([
 });
 
 //quiz
+Route::group([
+    'middleware' => 'auth:sanctum',
+    'prefix' => 'quiz'
+], function ($route) {
+    $route->get('/', [QuizController::class, 'index']);
+    $route->post('/create', [QuizController::class, 'create']);
+    $route->get('/{referenceNumber}', [QuizController::class, 'show']);
+    $route->put('/update/{referenceNumber}', [QuizController::class, 'update']);
+    $route->delete('/delete/{referenceNumber}', [QuizController::class, 'delete']);
+});
+
+//exam
+Route::group([
+    'middleware' => 'auth:sanctum',
+    'prefix' => 'exam'
+], function ($route) {
+    $route->get('/', [ExamController::class, 'index']);
+    $route->post('/create', [ExamController::class, 'create']);
+    $route->get('/{referenceNumber}', [ExamController::class, 'show']);
+    $route->put('/update/{referenceNumber}', [ExamController::class, 'update']);
+    $route->delete('/delete/{referenceNumber}', [ExamController::class, 'delete']);
+});
