@@ -7,7 +7,8 @@ use App\Models\{
     ProgrammingLanguage,
     Chapter,
     Lesson,
-    Quiz
+    Quiz,
+    Exam
 };
 
 trait Generator
@@ -34,17 +35,6 @@ trait Generator
         return $referenceNumber;
     }
 
-    protected function quizReferenceNumber(){
-
-        do {
-
-            $referenceNumber = bin2hex(random_bytes(6));
-
-        } while (Quiz::where("reference_number", $referenceNumber)->first());
-
-        return $referenceNumber;
-    }
-
     protected function lessonReferenceNumber(){
 
         do {
@@ -65,5 +55,27 @@ trait Generator
         } while (Lesson::where("folder", $folder)->first());
 
         return $folder;
+    }
+
+    protected function quizReferenceNumber(){
+
+        do {
+
+            $referenceNumber = bin2hex(random_bytes(6));
+
+        } while (Quiz::where("reference_number", $referenceNumber)->first());
+
+        return $referenceNumber;
+    }
+
+    protected function examReferenceNumber(){
+
+        do {
+
+            $referenceNumber = bin2hex(random_bytes(6));
+
+        } while (Exam::where("reference_number", $referenceNumber)->first());
+
+        return $referenceNumber;
     }
 }

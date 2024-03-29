@@ -9,7 +9,6 @@ use App\Models\Exam;
 class DeleteExamRepository extends BaseRepository
 {
     public function execute($referenceNumber){
-
         if ($this->user()->hasRole('ADMIN')){
 
             $exam = Exam::where('reference_number', $referenceNumber)->firstOrFail();

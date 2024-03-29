@@ -27,9 +27,7 @@ class CreateExamRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'title' => ['required|string|max:255'],
-            'questions' => ['required|array|min:10'], // Assuming you need exactly 15 questions
-            'questions.*.options' => ['required|array|min:2|max:4'] // Assuming each question has 2 to 4 options
+            'title' => ['string','required','unique:exams,title']
         ];
     }
 }

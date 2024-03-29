@@ -9,12 +9,10 @@ use App\Models\Exam;
 class CreateExamRepository extends BaseRepository
 {
     public function execute($request)
-    {
-        if ($this->user()->hasRole('ADMIN')) {
+    {if ($this->user()->hasRole('ADMIN')) {
             $exam = Exam::create([
                 'reference_number' => $this->examReferenceNumber(),
-                'title' => $request->title,
-                'questions' => $request->questions
+                'title' => $request->title
             ]);
         }
         else{
@@ -22,7 +20,7 @@ class CreateExamRepository extends BaseRepository
         }
             
             return $this->success("Exam successfully created", [
-                'reference_number' => $this->examReferenceNumber(),
+                'reference_number' => $exam->reference_number(),
                 'title' => $exam->title
             ]);
     }

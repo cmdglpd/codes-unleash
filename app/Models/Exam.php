@@ -10,12 +10,13 @@ class Exam extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 
-        'questions']; 
-        // Add other fillable fields as needed
+        'reference_number',
+        'title'
+    ]; 
 
         protected $hidden = [
             'id',
-            'exam_id'
+            'created_at',
+            'updated_at'
         ];
 }

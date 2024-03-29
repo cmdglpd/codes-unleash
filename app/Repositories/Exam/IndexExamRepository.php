@@ -4,22 +4,23 @@ namespace App\Repositories\Exam;
 
 use App\Repositories\BaseRepository;
 
+use App\Models\Exam;
+
 class IndexExamRepository extends BaseRepository
 {
     public function execute(){
         $allExams = Exam::all();
 
-        $exam = [];
+        $exams = [];
 
         foreach($allExams as $exam){
-            $exam[] = [
-
+            $exams[] = [
                 'referenceNumber' => $exam->reference_number,
                 'title' => $exam->title
             ];
         }
 
-        return $this->success("List of All Exam", $exam);
+        return $this->success("List of All Exams", $exams);
 
     }
 }
