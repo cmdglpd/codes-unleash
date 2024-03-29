@@ -7,7 +7,9 @@ use App\Http\Controllers\{
     AuthController,
     ProgrammingLanguageController,
     ChapterController,
-    LessonController
+    LessonController,
+    QuizController,
+    ExamController
 };
 
 /*

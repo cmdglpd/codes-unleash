@@ -4,11 +4,8 @@ namespace App\Http\Requests\Quiz;
 
 use App\Http\Requests\ResponseRequest;
 
-use App\Traits\Getter;
-
-class CreateQuizRequest extends ResponseRequest
+class ShowQuizRequest extends ResponseRequest
 {
-    use Getter;
      /**
      * Determine if the user is authorized to make this request.
      *
@@ -27,8 +24,7 @@ class CreateQuizRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'title' => ['string','required', 'unique:quizzes,title']
-
+            //
         ];
     }
 }

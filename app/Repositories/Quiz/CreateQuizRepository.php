@@ -23,5 +23,6 @@ class CreateQuizRepository extends BaseRepository
                 'reference_number' => $quiz->reference_number(),
                 'title' => $quiz->title
             ]);
+            
         } 
     }

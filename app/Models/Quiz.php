@@ -19,8 +19,4 @@ class Quiz extends Model
         'created_at',
         'updated_at'
     ];
-
-    protected function quizzes(){
-        return $this->hasMany(Quiz::class, 'quiz_id');
-    }
 }

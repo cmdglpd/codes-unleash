@@ -7,7 +7,8 @@ use App\Models\{
     ProgrammingLanguage,
     Chapter,
     Lesson,
-    Quiz
+    Quiz,
+    Exam
 };
 
 trait Getter
