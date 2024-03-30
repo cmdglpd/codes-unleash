@@ -38,8 +38,14 @@ trait Getter
     }
 
     protected function getQuizId($referenceNumber){
-        $lesson = Quiz::where('reference_number', $referenceNumber)->first();
+        $quiz = Quiz::where('reference_number', $referenceNumber)->first();
 
         return $quiz->id;
+    }
+
+    protected function getExamId($referenceNumber){
+        $exam = Exam::where('reference_number', $referenceNumber)->first();
+
+        return $exam->id;
     }
 }

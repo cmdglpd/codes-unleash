@@ -17,4 +17,3 @@ class ShowExamRepository extends BaseRepository
         ]);
     }
 }
-
