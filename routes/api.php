@@ -9,7 +9,8 @@ use App\Http\Controllers\{
     ChapterController,
     LessonController,
     QuizController,
-    ExamController
+    ExamController,
+    GoogleDriveController
 };
 
 /*
@@ -104,3 +105,7 @@ Route::group([
     $route->put('/update/{referenceNumber}', [ExamController::class, 'update']);
     $route->delete('/delete/{referenceNumber}', [ExamController::class, 'delete']);
 });
+
+Route::get('/google-drive', [GoogleDriveController::class, 'index']);
+Route::get('/google-drive/folder/{folderId}', [GoogleDriveController::class, 'listFilesInFolder']);
+

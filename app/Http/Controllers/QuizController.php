@@ -46,7 +46,7 @@ class QuizController extends Controller
         return $this->index->execute();
     }
 
-    protected function create(CreateQuizRequest $request)
+    protected function create(CreateQuizRequest $request,)
     {
         return $this->create->execute($request);
     }

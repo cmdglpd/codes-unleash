@@ -20,7 +20,7 @@ class CreateQuizRepository extends BaseRepository
             }
 
             return $this->success("Quiz successfully created", [
-                'reference_number' => $quiz->reference_number(),
+              //  'reference_number' => $quiz->reference_number(),
                 'title' => $quiz->title
             ]);
             
